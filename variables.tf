@@ -37,3 +37,8 @@ variable "use_bucket_versioning" {
 variable "s3_key" {
   description = "Path to your state.  Examples: dev/tf.state, prod/tf.state, dev/frontend/tf.state, dev/db-tier.tf, etc.."
 }
+
+variable "profile" {
+  description = "The profile to use for credentials"
+  type = string
+}

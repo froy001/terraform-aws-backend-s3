@@ -19,7 +19,7 @@ resource "aws_s3_bucket" "s3_backend" {
     prevent_destroy = true
   }
 
-  tags {
+  tags = {
     Name      = "TF remote state test"
     Terraform = "true"
   }
@@ -38,7 +38,7 @@ resource "aws_dynamodb_table" "terraform_state_lock" {
     type = "S"
   }
 
-  tags {
+  tags = {
     Purpose = "Terraform state lock for state in ${var.backend_s3_bucket}:${var.s3_key} "
   }
 }
@@ -58,6 +58,7 @@ resource "local_file" "terraform_tf" {
         region         = "${data.aws_region.current.name}"
         encrypt        = false
         dynamodb_table = "${var.backend_dynamodb_lock_table}"
+        profile = "${var.profile}"
       }
     }
     EOF
