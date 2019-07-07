@@ -40,5 +40,5 @@ variable "s3_key" {
 
 variable "profile" {
   description = "The profile to use for credentials"
-  type = string
+  type = "string"
 }
